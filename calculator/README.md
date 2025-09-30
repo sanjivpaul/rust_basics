@@ -15,7 +15,7 @@ cd calculator
 cargo run
 ```
 
-## Handling Environment Arguments
+## 1. Handling Environment Arguments
 
 ```rust
 use std::env::{args, Args};
@@ -39,4 +39,29 @@ output
     Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.69s
      Running `target/debug/calculator sanjiv`
 Args { inner: ["target/debug/calculator", "sanjiv"] }
+```
+
+## 2. Understanding the nth method
+
+```rust
+use std::env::{args, Args};
+
+fn main() {
+    let mut args:Args = args();
+    let first  = args.nth(1).unwrap();
+    let operator = args.nth(0).unwrap();
+    let second = args.nth(0).unwrap();
+
+    let first_number = first.parse::<f32>().unwrap();
+    let second_number = second.parse::<f32>().unwrap();
+    println!("{:?} {} {}", first, operator, second);
+}
+```
+
+## Declaring a function
+
+```rust
+fn operate(operator:char, first_number:f32, second_number:f32){
+
+}
 ```
