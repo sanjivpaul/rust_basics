@@ -104,3 +104,47 @@ fn output(first_number: f32, operator: char, second_number: f32, result: f32) ->
 }
 
 ```
+
+## Match Controll Flow
+
+```rust
+fn operate(operator: char, first_number: f32, second_number:f32)-> f32{
+    match operator {
+        '+' => first_number + second_number,
+        '-' => first_number - second_number,
+        '*' => first_number * second_number,
+        '/' => first_number / second_number,
+        '%' => first_number % second_number,
+        _ => 0.0,
+    }
+}
+```
+
+## Panicking!
+
+```rust
+fn operate(operator: char, first_number: f32, second_number:f32)-> f32{
+    match operator {
+        '+' => first_number + second_number,
+        '-' => first_number - second_number,
+        '*' | 'x' | 'X' => first_number * second_number,
+        '/' => first_number / second_number,
+        '%' => first_number % second_number,
+        _ => panic!("invalid operator used.")
+    }
+}
+```
+
+## Building & Release
+
+```bash
+cargo build --release
+```
+
+then you can run
+
+```bash
+sanjiv~$ ./target/release/calculator 2 + 2
+"2 + 2 = 4"
+sanjiv~$
+```
